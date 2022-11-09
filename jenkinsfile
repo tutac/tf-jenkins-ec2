@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage ("checkout from GIT") {
             steps {
-                git 'https://github.com/tutac/tf-jenkins-ec2.git'
-                sh  'cd tf-jenkins-ec2'
+                script{
+                    git 'https://github.com/tutac/tf-jenkins-ec2.git'
+                    sh  'cd tf-jenkins-ec2'
+                }
             }
         }
         stage ("terraform init") {
