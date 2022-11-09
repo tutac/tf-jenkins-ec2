@@ -87,7 +87,7 @@ resource "null_resource" "name" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "k8s_key"
-  public_key = ""
+  public_key = file("~/.ssh/k8s-key.pem")
 }
 
 output "k8s_node_public_ip" {
