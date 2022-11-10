@@ -1,3 +1,6 @@
+
+properties([parameters([choice(choices: ['apply', 'destroy'], description: 'Apply or Destroy the app ', name: 'terraform_action')])])
+
 pipeline {
     agent any
     
@@ -29,7 +32,7 @@ pipeline {
         }
         stage ("terraform apply") {
             steps {
-                sh 'terraform apply --auto-approve'
+                sh 'terraform ${params.terraform_action} --auto-approve'
             }
         }
     }
