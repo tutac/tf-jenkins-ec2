@@ -1,11 +1,8 @@
-
-
-
 pipeline {
     agent any
-    parameters {
-    choice choices: ['apply', 'destroy'], description: 'Apply or Destroy the terraform', name: 'ACTION'
-    }
+    // parameters {
+    // choice choices: ['apply', 'destroy'], description: 'Apply or Destroy the terraform', name: 'ACTION'
+    // }
     
     stages {
         stage ("checkout from GIT") {
@@ -35,7 +32,7 @@ pipeline {
         }
         stage ("terraform apply") {
             steps {
-                sh 'terraform ${params.ACTION} --auto-approve'
+                sh 'terraform apply --auto-approve'
             }
         }
     }
